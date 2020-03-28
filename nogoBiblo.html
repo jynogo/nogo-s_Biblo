@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Nogo's Biblo</title>
+    <link rel="icon" href="bilder/icon.png">
+    <link rel="stylesheet" type="text/css" href="nogoBiblo.css">
+</head>
+
+<body>
+    <p id="velkommen">VELKOMMEN</p>
+    <p id="h3">FYLL UT INFORMASJON OM BOKA OG GI BOKA ET TERNINGKAST</p>
+    <p id="h3">TRYKK "Send Inn" FOR Å LAGRE I BIBLIOTEKET</p>
+
+    <DIV ID="info">
+        <input type="text" id="Tittel" placeholder="BOKTITTEL">
+        <br>
+        <input type="date" id="Utgivelsesdato" placeholder="UTGIVELSESDATO TIL BOKEN">
+        <br>
+        <input type="text" id="Forfatter" placeholder="FORFATTER">
+        <br>
+        <input type="text" id="Forlag" placeholder="FORLAG">
+        <br>
+        <div id="Terningkast">
+            TERNINGKAST:
+            <select>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+                <option>6</option>
+            </select>
+        </div>
+        <br>
+        <input type="button" onclick="submit_data()" value="Send Inn">
+    </DIV>
+
+    <p id="creds">LAGET AV: JOHNNY NGO NGUYEN</p>
+
+    <div id="bilde"><img src="bilder/gif.gif" width="200"></div>
+
+    <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-auth.js"></script>
+
+    <script>
+        // Web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyAeRug2gyU3yQrXfRaEpmGUmv1R4F9j4pE",
+            authDomain: "nogo-sbiblo-bb082.firebaseapp.com",
+            databaseURL: "https://nogo-sbiblo-bb082.firebaseio.com",
+            projectId: "nogo-sbiblo-bb082",
+            storageBucket: "nogo-sbiblo-bb082.appspot.com",
+            messagingSenderId: "350862365931",
+            appId: "1:350862365931:web:a4f8546ca657ea5cb51aae"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        let db = firebase.database();
+        let bibliotek = db.ref("bibliotek");
+
+        function submit_data() {
+            let tittel_in = document.getElementById("Tittel").value;
+            let utgivelsesdato_in = document.getElementById("Utgivelsesdato").value;
+            let forfatter_in = document.getElementById("Forfatter").value;
+            let forlag_in = document.getElementById("Forlag").value;
+            let terningkast_in = document.getElementById("Terningkast").value;
+
+            bibliotek.push({
+                tittel: tittel_in,
+                utgivelsesdato: utgivelsesdato_in,
+                forfatter_navn: forfatter_in,
+                forlag: forlag_in,
+                terningkast: terningkast_in
+            });
+            window.alert("Boken er nå lagt til nogo's biblo");
+
+        };  
+    </script>
+
+</body></html>
