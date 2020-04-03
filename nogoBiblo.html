@@ -10,10 +10,10 @@
 
 <body>
     <p id="velkommen">VELKOMMEN</p>
-    <p id="h3">FYLL UT INFORMASJON OM BOKA OG GI BOKA ET TERNINGKAST</p>
-    <p id="h3">TRYKK "Send Inn" FOR Å LAGRE I BIBLIOTEKET</p>
+    <p class="h3">FYLL UT INFORMASJON OM BOKA OG GI BOKA ET TERNINGKAST</p>
+    <p class="h3">TRYKK "Send Inn" FOR Å LAGRE I BIBLIOTEKET</p>
 
-    <DIV ID="info">
+    <div id="info">
         <input type="text" id="Tittel" placeholder="BOKTITTEL">
         <br>
         <input type="date" id="Utgivelsesdato" placeholder="UTGIVELSESDATO TIL BOKEN">
@@ -22,9 +22,9 @@
         <br>
         <input type="text" id="Forlag" placeholder="FORLAG">
         <br>
-        <div id="Terningkast">
+        <div id="info">
             TERNINGKAST:
-            <select>
+            <select id="Terningkast">
                 <option>1</option>
                 <option>2</option>
                 <option>3</option>
@@ -32,10 +32,10 @@
                 <option>5</option>
                 <option>6</option>
             </select>
-        </div>
+        </div></div>
         <br>
-        <input type="button" onclick="submit_data()" value="Send Inn">
-    </DIV>
+        
+    <div id="button"><input type="button" onclick="submit_data()" value="Send Inn"></div>
 
     <p id="creds">LAGET AV: JOHNNY NGO NGUYEN</p>
 
@@ -70,15 +70,13 @@
             let terningkast_in = document.getElementById("Terningkast").value;
 
             bibliotek.push({
-                tittel: tittel_in,
-                utgivelsesdato: utgivelsesdato_in,
-                forfatter_navn: forfatter_in,
-                forlag: forlag_in,
-                terningkast: terningkast_in
+                Tittel: tittel_in,
+                Utgivelsesdato: utgivelsesdato_in,
+                Forfatter_navn: forfatter_in,
+                Forlag: forlag_in,
+                Terningkast: terningkast_in,
             });
-            window.alert("Boken er nå lagt til nogo's biblo");
-
-        };  
+            window.alert("Boken er nå lagt til nogo's biblo")
+        }
     </script>
-
 </body></html>
